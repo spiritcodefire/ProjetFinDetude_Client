@@ -10,6 +10,7 @@ const Haader = () => {
                     <div>Nous Conctactez</div>
                     <div>Votre Commande</div>
                     <div>Login</div>
+                    <div>Card</div>
                 </div>
             </div>
             <div className="headerXS">

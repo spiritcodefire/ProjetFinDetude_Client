@@ -16,9 +16,7 @@ const [stateProductbyId, SetstateProductbyId] = React.useState(null)
       
           const product = await data.json()
           SetstateProductbyId(product)
-          console.log(product);
           
-        
         }
     
         getProductbyId();  
@@ -29,9 +27,13 @@ const [stateProductbyId, SetstateProductbyId] = React.useState(null)
     
 console.log(stateProductbyId);
     return (
-        <div>
+        <div className="border border-dark shadow-lg" style={{height: "500px"}}>
             <div className="" style={{textAlign: "center"}}>
-                
+                    {stateProductbyId &&
+                stateProductbyId._id}
+                    <br />
+                    <br />
+
                 {stateProductbyId &&
                 stateProductbyId.category}
 
@@ -46,6 +48,16 @@ console.log(stateProductbyId);
 
                 {stateProductbyId &&
                 stateProductbyId.price}
+
+                    <br />
+                    <br />
+                    {stateProductbyId &&
+                stateProductbyId.image}
+                    <br />
+                    <br />
+                
+
+                <button >ajouter au panier</button>
 
             </div>
         </div>
