@@ -1,10 +1,13 @@
 import React from 'react'
-
-
+import { CartContext } from '../logique/hooks/CardProvider'
+import UrlServer from '../utils/UrlServer'
 
 
 const ProductDetail = (props) => {
+    const { addToCart } = React.useContext(CartContext)
+
 const [stateProductbyId, SetstateProductbyId] = React.useState(null)
+// const [values, setValues] = React.useState([])
 
     var paramsId = props.match.params.id
     React.useEffect(() => {
@@ -12,11 +15,13 @@ const [stateProductbyId, SetstateProductbyId] = React.useState(null)
   
         const getProductbyId = async () => {
                 
-          const data = await window.fetch(`http://localhost:5000/api/product/${paramsId}`)
+          const data = await window.fetch(`${UrlServer}/api/product/${paramsId}`)
       
           const product = await data.json()
-          SetstateProductbyId(product)
-          
+          console.log(product);
+         
+        SetstateProductbyId(product)
+        
         }
     
         getProductbyId();  
@@ -24,8 +29,10 @@ const [stateProductbyId, SetstateProductbyId] = React.useState(null)
     
     }, [])
 
-    
 console.log(stateProductbyId);
+
+    
+
     return (
         <div className="border border-dark shadow-lg" style={{height: "500px"}}>
             <div className="" style={{textAlign: "center"}}>
@@ -57,7 +64,9 @@ console.log(stateProductbyId);
                     <br />
                 
 
-                <button >ajouter au panier</button>
+                <button onClick={() => {
+                    addToCart(stateProductbyId);
+                }}>ajouter au panier</button>
 
             </div>
         </div>

@@ -1,8 +1,11 @@
-const express = require('express') ; 
-const path = require('path')
-require('dotenv').config()
+import express from 'express'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const PORT = process.env.PORT || 5555 ;
+// const path = require('path')
+// require('dotenv').config()
+
+var port = 'passenger' ;
 
 const app = express() ;
 
@@ -16,6 +19,6 @@ app.get('/*', (req, res) =>{
     res.sendFile(path.join(__dirname, './client/build/index.html'))  
 });
 
-app.listen(PORT, () => {
-    console.log(`le serveur est lancé sur le port : ${PORT}`)
+app.listen(port, () => {
+    console.log(`le serveur est lancé sur le port : ${port}`)
 });

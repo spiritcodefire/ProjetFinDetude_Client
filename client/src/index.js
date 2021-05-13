@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ProductProvider from './logique/hooks/ProductProvider'
+import CardProvider from './logique/hooks/CardProvider'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ProductProvider>
+      <CardProvider>
+        <App />
+      </CardProvider>
+    </ProductProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
